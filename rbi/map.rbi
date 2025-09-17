@@ -1,6 +1,4 @@
 # typed: false
-# frozen_string_literal: true
-
 
 #: [K, V] (Hash[K, V]) -> Map[K, V]
 #: (ActionController::Parameters | ActiveSupport::HashWithIndifferentAccess) -> Map[String | Symbol, untyped]

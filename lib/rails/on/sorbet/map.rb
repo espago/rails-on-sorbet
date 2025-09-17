@@ -9,13 +9,3 @@ module Map
 end
 
 def Map(val) = val # rubocop:disable Style/TopLevelMethodDefinition,Naming/MethodName
-
-#: [K = String, V = untyped]
-class ActionController::Parameters
-  include Map
-end
-
-#: [K = String, V = untyped]
-class ActiveSupport::HashWithIndifferentAccess
-  include Map
-end
