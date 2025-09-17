@@ -74,7 +74,7 @@ m = Map(params) #=> Map[String, untyped]
 foo(m) # OK
 ```
 
-### alias_association
+### ActiveRecord::Base::alias_association
 
 This gem adds a new method called `alias_association` on ActiveRecord classes.
 It lets you define aliases for getters and setters of `belongs_to` and `has_one` associations. There is also a tapioca compiler that makes sorbet aware of these aliases.
