@@ -48,6 +48,8 @@ require 'active_support'
 
 module ActiveSupport
   class CurrentAttributes
-    prepend Rails::On::Sorbet::CurrentAttributes
+    class << self
+      prepend Rails::On::Sorbet::CurrentAttributes
+    end
   end
 end
