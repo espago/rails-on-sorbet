@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+bundle exec srb tc
+bundle exec rubocop --parallel --color --config ./.rubocop.yml
+bundle exec rake test

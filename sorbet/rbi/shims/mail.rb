@@ -1,0 +1,3 @@
+module Mail
+  class Message; end
+end
