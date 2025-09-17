@@ -47,7 +47,7 @@ end
 require 'active_support'
 
 module ActiveSupport
-  class CurrentAttributes # rubocop:disable Style/StaticClass
-    extend Rails::On::Sorbet::CurrentAttributes
+  class CurrentAttributes
+    prepend Rails::On::Sorbet::CurrentAttributes
   end
 end
