@@ -14,7 +14,7 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 
 ## [0.1.1] - 18.09.2025
 
-[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.0.0...v0.1.0)
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.1.0...v0.1.1)
 
 ### Changes
 - Fix `.rbi` file placing
