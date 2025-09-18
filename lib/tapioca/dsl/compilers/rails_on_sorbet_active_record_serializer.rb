@@ -21,18 +21,18 @@ module Tapioca
       def decorate
         root.create_path(constant) do |klass|
           constant._sorbet_serializer_definitions.sort.each do |name, definition|
-            return_type = definition.return_type || definition.coder.try(:return_type) || T.untyped
+            return_type = definition.return_type || definition.coder.try(:return_type) || T.untyped # rubocop:disable Sorbet/ForbidTUntyped
             setter_type = definition.setter_type || definition.coder.try(:setter_type) || return_type
 
             return_type_string =
-              if return_type == T.unsafe(T.untyped)
+              if return_type == T.unsafe(T.untyped) # rubocop:disable Sorbet/ForbidTUnsafe,Sorbet/ForbidTUntyped
                 return_type.to_s
               else
                 "T.nilable(#{return_type})"
               end
 
             setter_type_string =
-              if setter_type == T.unsafe(T.untyped)
+              if setter_type == T.unsafe(T.untyped) # rubocop:disable Sorbet/ForbidTUnsafe,Sorbet/ForbidTUntyped
                 setter_type.to_s
               else
                 "T.nilable(#{setter_type})"
