@@ -1,10 +1,10 @@
 # typed: true
 
-class ActionController::TestCase
-  module GeneratedPathHelpersModule; end
-  include GeneratedPathHelpersModule
+module GeneratedPathHelpersModule; end
+module GeneratedUrlHelpersModule; end
 
-  module GeneratedUrlHelpersModule; end
+class ActionController::TestCase
+  include GeneratedPathHelpersModule
   include GeneratedUrlHelpersModule
 end
 
