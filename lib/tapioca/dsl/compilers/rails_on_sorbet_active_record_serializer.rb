@@ -24,8 +24,20 @@ module Tapioca
             return_type = definition.return_type || definition.coder.try(:return_type) || T.untyped
             setter_type = definition.setter_type || definition.coder.try(:setter_type) || return_type
 
-            return_type_string = "T.nilable(#{return_type})"
-            setter_type_string = "T.nilable(#{setter_type})"
+            return_type_string =
+              if return_type == T.unsafe(T.untyped)
+                return_type.to_s
+              else
+                "T.nilable(#{return_type})"
+              end
+
+            setter_type_string =
+              if setter_type == T.unsafe(T.untyped)
+                setter_type.to_s
+              else
+                "T.nilable(#{setter_type})"
+              end
+
             doc = definition.doc
             comments = []
             comments << RBI::Comment.new(doc) if doc
