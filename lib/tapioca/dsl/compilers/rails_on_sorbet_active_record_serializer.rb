@@ -21,7 +21,7 @@ module Tapioca
       def decorate
         root.create_path(constant) do |klass|
           constant._sorbet_serializer_definitions.sort.each do |name, definition|
-            return_type = definition.return_type || definition.coder.try(:return_type) || Object
+            return_type = definition.return_type || definition.coder.try(:return_type) || T.untyped
             setter_type = definition.setter_type || definition.coder.try(:setter_type) || return_type
 
             return_type_string = "T.nilable(#{return_type})"
