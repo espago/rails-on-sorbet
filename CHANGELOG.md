@@ -12,6 +12,14 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.2.0] - 18.09.2025
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.1.1...v0.2.0)
+
+### Changes
+- Change `Rails::On::Sorbet::CurrentAttributes` from a module to a class
+- Favour using `Rails::On::Sorbet::CurrentAttributes` instead of `ActiveSupport::CurrentAttributes`
+
 ## [0.1.1] - 18.09.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.1.0...v0.1.1)
