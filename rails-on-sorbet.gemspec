@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'booleans', '~> 0.1.3'
   spec.add_dependency 'rails', '>= 7.2'
-  spec.add_dependency 'sorbet-runtime', '>= 0.6'
+  spec.add_dependency 'sorbet-runtime', '>= 0.5'
 end
