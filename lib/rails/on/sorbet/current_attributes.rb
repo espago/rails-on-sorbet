@@ -1,11 +1,11 @@
 # typed: false
 # frozen_string_literal: true
 
+require 'active_support'
+
 module Rails::On::Sorbet
   # Shim for ActiveSupport::CurrentAttributes to support sorbet
-  #
-  # @requires_ancestor: singleton(ActiveSupport::CurrentAttributes)
-  module CurrentAttributes
+  class CurrentAttributes < ActiveSupport::CurrentAttributes
     # Holds the data of a single attribute definition
     class Attribute
       #: Symbol
@@ -25,31 +25,23 @@ module Rails::On::Sorbet
       end
     end
 
-    # Get a map with all defined attributes and their types
-    #
-    #: -> Hash[Symbol, Attribute]
-    def attribute_map
-      @attribute_map ||= {}
-    end
-
-    # Declare a new attribute with a sorbet type
-    #
-    #: (*Symbol, ?type: untyped, ?doc: String?, ?default: untyped) -> void
-    def attribute(*names, type: nil, doc: nil, default: ::ActiveSupport::CurrentAttributes::NOT_SET)
-      names.each do |name|
-        attribute_map[name] = Attribute.new(name, type, doc)
-      end
-      super(*names, default: default)
-    end
-  end
-end
-
-require 'active_support'
-
-module ActiveSupport
-  class CurrentAttributes
     class << self
-      prepend Rails::On::Sorbet::CurrentAttributes
+      # Get a map with all defined attributes and their types
+      #
+      #: -> Hash[Symbol, Attribute]
+      def attribute_map
+        @attribute_map ||= {}
+      end
+
+      # Declare a new attribute with a sorbet type
+      #
+      #: (*Symbol, ?type: untyped, ?doc: String?, ?default: untyped) -> void
+      def attribute(*names, type: nil, doc: nil, default: ::ActiveSupport::CurrentAttributes::NOT_SET)
+        names.each do |name|
+          attribute_map[name] = Attribute.new(name, type, doc)
+        end
+        super(*names, default: default)
+      end
     end
   end
 end

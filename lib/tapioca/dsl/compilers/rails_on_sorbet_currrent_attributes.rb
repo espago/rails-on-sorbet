@@ -3,7 +3,7 @@
 
 module Tapioca
   module Compilers
-    #: [ConstantType = Class & ::Rails::On::Sorbet::CurrentAttributes]
+    #: [ConstantType = singleton(::Rails::On::Sorbet::CurrentAttributes)]
     class RailsOnSorbetCurrentAttributes < Tapioca::Dsl::Compiler
 
       class << self
@@ -11,7 +11,7 @@ module Tapioca
         #: -> Enumerable[Module]
         def gather_constants
           all_classes.select do |klass|
-            klass.singleton_class < ::Rails::On::Sorbet::CurrentAttributes
+            klass < ::Rails::On::Sorbet::CurrentAttributes
           end
         end
       end

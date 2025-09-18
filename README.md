@@ -101,15 +101,17 @@ Example:
   f.owner == f.user #=> true
 ```
 
-### ActiveSupport::CurrentAttributes
+### Rails::On::Sorbet::CurrentAttributes
 
-New optional keyword arguments have been added to `ActiveSupport::CurrentAttributes::attribute`:
+This is a subclass of `ActiveSupport::CurrentAttributes` with tapioca/sorbet support.
+
+New optional keyword arguments have been added to `attribute`:
 - `type`: the sorbet type of the getter/setter
 - `doc`: a docstring whose content will be used to generate a comment above the rbi signature created by tapioca
 
 Example:
 ```rb
-class Current < ActiveSupport::CurrentAttributes
+class Current < Rails::On::Sorbet::CurrentAttributes
   attribute :session_counter, type: T.nilable(Integer), doc: <<~DOC
     A counter that gets incremented when a new session is created.
   DOC
