@@ -12,6 +12,13 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.2.6] - 02.10.2025
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.2.5...v0.2.6)
+
+### Changes
+- Add missing `T::Generic`
+
 ## [0.2.0] - 18.09.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.1.1...v0.2.0)

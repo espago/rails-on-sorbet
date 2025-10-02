@@ -8,6 +8,8 @@ def Map(val); end
 # @abstract
 #: [out K, out V]
 module Map
+  extend T::Generic
+
   # Returns a new array populated with the keys from this hash. See also
   # [`Hash#values`](https://docs.ruby-lang.org/en/2.7.0/Hash.html#method-i-values).
   #
