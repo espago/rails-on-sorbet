@@ -12,6 +12,13 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.2.7] - 08.10.2025
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.2.6...v0.2.7)
+
+### Changes
+- Improve signatures of `Map#include?`, `Map#key?`, `Map#[]`, `Map#value?`,`Hash#include?`, `Hash#key?`, `Hash#[]`, `Hash#value?`, `Set#include?`
+
 ## [0.2.6] - 02.10.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.2.5...v0.2.6)

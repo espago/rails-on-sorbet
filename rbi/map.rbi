@@ -28,7 +28,7 @@ module Map
   sig {abstract.returns(T::Boolean)}
   def empty?(); end
 
-  sig { abstract.params(object: BasicObject).returns(T::Boolean) }
+  sig { abstract.params(object: T.anything).returns(T::Boolean) }
   def exclude?(object); end
 
   # Returns `true` if the given key is present in *hsh*.
@@ -49,7 +49,7 @@ module Map
   # [`Enumerable#include?`](https://docs.ruby-lang.org/en/2.7.0/Enumerable.html#method-i-include-3F)
   sig do
     abstract.params(
-        arg0: K,
+        arg0: T.anything,
     )
     .returns(T::Boolean)
   end
@@ -113,7 +113,7 @@ module Map
 
   sig do
     abstract.params(
-        arg0: K,
+        arg0: T.anything,
     )
     .returns(T::Boolean)
   end
@@ -290,7 +290,7 @@ module Map
   # ```
   sig do
     abstract.params(
-        arg0: K,
+        arg0: T.anything,
     )
     .returns(T.nilable(V))
   end
@@ -753,7 +753,7 @@ module Map
   # ```
   sig do
     abstract.params(
-        arg0: V,
+        arg0: T.anything,
     )
     .returns(T::Boolean)
   end
