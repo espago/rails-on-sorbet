@@ -87,6 +87,31 @@ module Map
   sig {abstract.returns(T::Enumerator[K])}
   def each_key(&blk); end
 
+  # Calls *block* once for each key in *hsh*, passing the key-value pair as
+  # parameters.
+  #
+  # If no block is given, an enumerator is returned instead.
+  #
+  # ```ruby
+  # h = { "a" => 100, "b" => 200 }
+  # h.each {|key, value| puts "#{key} is #{value}" }
+  # ```
+  #
+  # *produces:*
+  #
+  # ```ruby
+  # a is 100
+  # b is 200
+  # ```
+  sig do
+    abstract.params(
+        blk: T.proc.params(arg0: [K, V]).returns(BasicObject),
+    )
+    .returns(T::Hash[K, V])
+  end
+  sig {returns(T::Enumerator[[K, V]])}
+  def each(&blk); end
+
   # Returns `true` if the given key is present in *hsh*.
   #
   # ```ruby

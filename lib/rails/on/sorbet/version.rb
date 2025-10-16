@@ -3,7 +3,7 @@
 module Rails
   module On
     module Sorbet
-      VERSION = '0.2.7'
+      VERSION = '0.2.8'
     end
   end
 end
