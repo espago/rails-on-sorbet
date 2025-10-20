@@ -85,6 +85,62 @@ m = Map(params) #=> Map[String, untyped]
 foo(m) # OK
 ```
 
+### TypedRelation
+
+Sorbet lacks proper generic handling of `ActiveRecord::Relation`.
+The class itself is not generic and tapioca generates a bunch of classes like `X::PrivateRelation`, `X::PrivateAssociationRelation`, `X::PrivateCollectionProxy` per model but these classes have no common generic ancestors which makes them incredibly finnicky to work with.
+
+Because of that we introduced a bunch of interfaces:
+- `TypedRelation` is included by per-model classes like `X::PrivateRelation`
+- `TypedAssociation::Relation` is included by per-model classes like `X::PrivateAssociationRelation`
+- `TypedAssociation::CollectionProxy` is included by per-model classes like `X::PrivateCollectionProxy`
+
+Example:
+```rb
+class Foo < ActiveRecord::Base
+  has_many :bars
+end
+
+foo = Foo.new
+foo.bars #=> Bar::PrivateCollectionProxy
+
+#: (TypedAssociation::CollectionProxy[Bar]) -> void
+def do_smth(rel); end
+
+do_smth(foo.bars) # ok!
+```
+
+One common use case is working on child/parent model associations.
+
+```rb
+class Foo < ActiveRecord::Base
+  belongs_to :user
+end
+
+class Bar < Foo
+  belongs_to :manager
+end
+
+class User < ActiveRecord::Base
+  has_many :foos
+end
+
+class Manager < ActiveRecord::Base
+  has_many :bars
+end
+
+#: (TypedAssociation::CollectionProxy[Foo]) -> void
+def do_smth_on_foos(rel); end
+
+user = User.new
+user.foos #=> Foo::PrivateCollectionProxy
+do_smth_on_foos(user.foos) # ok!
+
+user = Manager.new
+user.bars #=> Bar::PrivateCollectionProxy
+do_smth_on_foos(user.bars) # ok!
+```
+
 ### ActiveRecord::Base::alias_association
 
 This gem adds a new method called `alias_association` on ActiveRecord classes.
@@ -92,13 +148,13 @@ It lets you define aliases for getters and setters of `belongs_to` and `has_one`
 
 Example:
 ```rb
-  class Foo < ApplicationRecord
-    belongs_to :user
-    alias_association :owner, :user
-  end
+class Foo < ApplicationRecord
+  belongs_to :user
+  alias_association :owner, :user
+end
 
-  f = Foo.last
-  f.owner == f.user #=> true
+f = Foo.last
+f.owner == f.user #=> true
 ```
 
 ### Rails::On::Sorbet::CurrentAttributes

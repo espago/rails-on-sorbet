@@ -12,6 +12,13 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.3.0] - 20.10.2025
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.2.8...v0.3.0)
+
+### Changes
+- Add `TypedRelation` and `TypedAssociation` for better ActiveRecord::Relation sorbet handling
+
 ## [0.2.8] - 16.10.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.2.7...v0.2.8)
