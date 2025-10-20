@@ -29,18 +29,18 @@ module Tapioca
           private_relation_where_chain = klass.create_class('PrivateRelationWhereChain')
           private_relation_where_chain.create_include('::TypedRelation::WhereChain')
 
-          private_collection_proxy = klass.create_class('PrivateCollectionProxy')
-          private_collection_proxy.create_include('::TypedRelation::CollectionProxy')
-
 
           private_association_relation = klass.create_class('PrivateAssociationRelation')
-          private_association_relation.create_include('::TypedAssociationRelation')
+          private_association_relation.create_include('::TypedAssociation::Relation')
 
           private_relation_group_chain = klass.create_class('PrivateAssociationRelationGroupChain')
-          private_relation_group_chain.create_include('::TypedAssociationRelation::GroupChain')
+          private_relation_group_chain.create_include('::TypedAssociation::Relation::GroupChain')
 
           private_relation_where_chain = klass.create_class('PrivateAssociationRelationWhereChain')
-          private_relation_where_chain.create_include('::TypedAssociationRelation::WhereChain')
+          private_relation_where_chain.create_include('::TypedAssociation::Relation::WhereChain')
+
+          private_collection_proxy = klass.create_class('PrivateCollectionProxy')
+          private_collection_proxy.create_include('::TypedAssociation::CollectionProxy')
         end
       end
 

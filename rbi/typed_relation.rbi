@@ -416,7 +416,6 @@ module TypedCommonRelationMethods
 end
 
 # @abstract
-# @requires_ancestor: ActiveRecord::Relation
 module TypedRelation
   Elem = type_member(:out)
 
@@ -468,7 +467,6 @@ module TypedRelation
     def sum(column_name = nil, &block); end
   end
 
-  # @requires_ancestor: ::ActiveRecord::QueryMethods::WhereChain
   # @abstract
   module WhereChain
     Elem = type_member(:out)
@@ -808,7 +806,6 @@ module TypedAssociation
   end
 
   # @abstract
-  # @requires_ancestor: ActiveRecord::AssociationRelation
   module Relation
     include TypedCommonRelationMethods
     include TypedGeneratedAssociationRelationMethods
@@ -822,7 +819,6 @@ module TypedAssociation
       def WhereChain(val); end
     end
 
-    # @requires_ancestor: ::ActiveRecord::QueryMethods::WhereChain
     # @abstract
     module WhereChain
       Elem = type_member(:out)
@@ -879,7 +875,6 @@ module TypedAssociation
     end
   end
 
-  # @requires_ancestor: ActiveRecord::Associations::CollectionProxy
   # @abstract
   module CollectionProxy
     include TypedCommonRelationMethods

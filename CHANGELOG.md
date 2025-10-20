@@ -12,6 +12,13 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.3.1] - 20.10.2025
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.3.0...v0.3.1)
+
+### Changes
+- Fix `Tapioca::Compilers::RailsOnSorbetActiveRecordRelations` and `TypedRelation` definitions
+
 ## [0.3.0] - 20.10.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.2.8...v0.3.0)
