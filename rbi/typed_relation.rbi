@@ -5,6 +5,8 @@ def TypedRelation(val); end
 
 # @abstract
 module TypedCommonRelationMethods
+  extend T::Generic
+
   Elem = type_member(:out)
 
   # START CommonRelationMethods
@@ -417,6 +419,7 @@ end
 
 # @abstract
 module TypedRelation
+  extend T::Generic
   Elem = type_member(:out)
 
   class << self
@@ -428,6 +431,7 @@ module TypedRelation
 
   # @abstract
   module GroupChain
+    extend T::Generic
     include TypedRelation
 
     Elem = type_member(:out)
@@ -469,6 +473,7 @@ module TypedRelation
 
   # @abstract
   module WhereChain
+    extend T::Generic
     Elem = type_member(:out)
 
     sig { abstract.params(args: T.untyped).returns(TypedRelation[Elem]) }
@@ -638,6 +643,7 @@ end
 
 # @abstract
 module TypedGeneratedAssociationRelationMethods
+  extend T::Generic
   Elem = type_member(:out)
 
   sig { abstract.returns(T::Array[Elem]) }
@@ -807,6 +813,7 @@ module TypedAssociation
 
   # @abstract
   module Relation
+    extend T::Generic
     include TypedCommonRelationMethods
     include TypedGeneratedAssociationRelationMethods
 
@@ -821,6 +828,7 @@ module TypedAssociation
 
     # @abstract
     module WhereChain
+      extend T::Generic
       Elem = type_member(:out)
 
       sig { abstract.params(args: T.untyped).returns(Relation[Elem]) }
@@ -835,6 +843,7 @@ module TypedAssociation
 
     # @abstract
     module GroupChain
+      extend T::Generic
       include Relation
 
       Elem = type_member(:out)
@@ -877,6 +886,7 @@ module TypedAssociation
 
   # @abstract
   module CollectionProxy
+    extend T::Generic
     include TypedCommonRelationMethods
     include TypedGeneratedAssociationRelationMethods
 
