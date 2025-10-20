@@ -54,5 +54,6 @@ module TypedAssociation
 
   module CollectionProxy
     extend T::Generic
+    include TypedRelation
   end
 end

@@ -887,6 +887,7 @@ module TypedAssociation
   # @abstract
   module CollectionProxy
     extend T::Generic
+    include TypedRelation
     include TypedCommonRelationMethods
     include TypedGeneratedAssociationRelationMethods
 
