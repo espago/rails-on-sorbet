@@ -425,9 +425,9 @@ module TypedRelation
   Elem = type_member(:out)
 
   class << self
-    #: (ActiveRecord::Relation) -> GroupChain[untyped]
+    #: (ActiveRecord::Relation) -> TypedRelation::GroupChain[untyped]
     def GroupChain(val); end
-    #: (ActiveRecord::QueryMethods::WhereChain) -> WhereChain[untyped]
+    #: (ActiveRecord::QueryMethods::WhereChain) -> TypedRelation::WhereChain[untyped]
     def WhereChain(val); end
   end
 
@@ -807,7 +807,7 @@ end
 
 module TypedAssociation
   class << self
-    #: (::ActiveRecord::Relation) -> Relation[untyped]
+    #: (::ActiveRecord::Relation) -> TypedAssociation::Relation[untyped]
     def Relation(val); end
     #: (::ActiveRecord::Associations::CollectionProxy) -> CollectionProxy[untyped]
     def CollectionProxy(val); end
@@ -822,9 +822,9 @@ module TypedAssociation
     Elem = type_member(:out)
 
     class << self
-      #: (ActiveRecord::Relation) -> GroupChain[untyped]
+      #: (ActiveRecord::Relation) -> TypedAssociation::Relation::GroupChain[untyped]
       def GroupChain(val); end
-      #: (ActiveRecord::QueryMethods::WhereChain) -> WhereChain[untyped]
+      #: (ActiveRecord::QueryMethods::WhereChain) -> TypedAssociation::Relation::WhereChain[untyped]
       def WhereChain(val); end
     end
 
@@ -833,20 +833,20 @@ module TypedAssociation
       extend T::Generic
       Elem = type_member(:out)
 
-      sig { abstract.params(args: T.untyped).returns(Relation[Elem]) }
+      sig { abstract.params(args: T.untyped).returns(TypedAssociation::Relation[Elem]) }
       def associated(*args); end
 
-      sig { abstract.params(args: T.untyped).returns(Relation[Elem]) }
+      sig { abstract.params(args: T.untyped).returns(TypedAssociation::Relation[Elem]) }
       def missing(*args); end
 
-      sig { abstract.params(opts: T.untyped, rest: T.untyped).returns(Relation[Elem]) }
+      sig { abstract.params(opts: T.untyped, rest: T.untyped).returns(TypedAssociation::Relation[Elem]) }
       def not(opts, *rest); end
     end
 
     # @abstract
     module GroupChain
       extend T::Generic
-      include Relation
+      include TypedAssociation::Relation
 
       Elem = type_member(:out)
 
