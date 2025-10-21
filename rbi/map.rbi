@@ -4,6 +4,32 @@
 #: (ActionController::Parameters | ActiveSupport::HashWithIndifferentAccess) -> Map[String | Symbol, untyped]
 def Map(val); end
 
+# `Map` represents a hash-like object
+# Use the `Map` type in a signature.
+#
+#     #: (Map[Symbol | String, Integer]) -> void
+#     def foo(m)
+#       m["foo"] #=> Integer?
+#     end
+#
+#     hash = { "foo" => 4 } #: Hash[String, Integer]
+#     m = Map(hash) #=> Map[Symbol | String, Integer]
+#     foo(m) # OK
+#
+#     hash = { "foo" => 4 }.with_indifferent_access # => ActiveSupport::HashWithIndifferentAccess
+#     m = Map(hash) #=> Map[Symbol | String, untyped]
+#     foo(m) # OK
+#
+#     params = ActionController::Parameters.new # => ActionController::Parameters
+#     m = Map(params) #=> Map[Symbol | String, untyped]
+#     foo(m) # OK
+#
+# Cast a `Hash`, `ActionController::Parameters` or `ActiveSupport::HashWithIndifferentAccess`
+# to a `Map`. The `Map` type defines common methods shared between these hash-like types.
+#
+# Due to current Sorbet limitations, hash-like types cannot directly implement the `Map` interface.
+# The `Map` method provides a way to cast between hash-like types and `Map` to enable type-safe usage.
+#
 # @requires_ancestor: Object
 # @abstract
 #: [out K, out V]

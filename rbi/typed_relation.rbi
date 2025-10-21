@@ -417,6 +417,8 @@ module TypedCommonRelationMethods
   # END CommonRelationMethods
 end
 
+# Represents a typed `ActiveRecord::Relation`.
+#
 # @abstract
 module TypedRelation
   extend T::Generic
@@ -884,6 +886,8 @@ module TypedAssociation
     end
   end
 
+  # Represents a typed `ActiveRecord::Associations::CollectionProxy`
+  #
   # @abstract
   module CollectionProxy
     extend T::Generic

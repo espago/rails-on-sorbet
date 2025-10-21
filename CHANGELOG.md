@@ -12,6 +12,14 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.3.4] - 21.10.2025
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.3.3...v0.3.4)
+
+### Changes
+- Add `Map::Params`
+- Require `TypedRelation` automatically
+
 ## [0.3.3] - 20.10.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.3.2...v0.3.3)
