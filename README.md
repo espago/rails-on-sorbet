@@ -85,6 +85,9 @@ m = Map(params) #=> Map[String, untyped]
 foo(m) # OK
 ```
 
+There is a `Map::Params` alias for the result of converting `ActionController::Parameters` and
+`ActiveSupport::HashWithIndifferentAccess` to `Map`: `Map[String | Symbol, untyped]`.
+
 ### TypedRelation
 
 Sorbet lacks proper generic handling of `ActiveRecord::Relation`.

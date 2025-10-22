@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails-on-sorbet (0.3.6)
+    rails-on-sorbet (0.4.0)
       booleans (~> 0.1.3)
       rails (>= 7.2)
       sorbet-runtime (>= 0.5)

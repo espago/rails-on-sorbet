@@ -3,3 +3,9 @@ inherit_gem:
 
 AllCops:
   TargetRubyVersion: 3.3
+
+Sorbet/ForbidTUntyped:
+  Enabled: false
+
+Sorbet/ForbidTUnsafe:
+  Enabled: false

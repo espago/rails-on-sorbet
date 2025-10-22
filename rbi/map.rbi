@@ -36,6 +36,8 @@ def Map(val); end
 module Map
   extend T::Generic
 
+  Params = T.type_alias { Map[T.any(String, Symbol), T.untyped] }
+
   # Returns a new array populated with the keys from this hash. See also
   # [`Hash#values`](https://docs.ruby-lang.org/en/2.7.0/Hash.html#method-i-values).
   #

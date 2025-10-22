@@ -4,7 +4,7 @@
 require 'action_controller'
 require 'active_support'
 
-module Map
+module Map # rubocop:disable Style/Documentation
   extend T::Generic
 
   # Map type for API params.
