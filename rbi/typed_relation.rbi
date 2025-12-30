@@ -7,7 +7,7 @@ def TypedRelation(val); end
 # @abstract
 module TypedCommonRelationMethods
   extend T::Generic
-  include Enumerable[Elem]
+  include Enumerable
 
   Elem = type_member(:out)
 
