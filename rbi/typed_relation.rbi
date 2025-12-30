@@ -3,13 +3,22 @@
 #: (ActiveRecord::Relation) -> TypedRelation[untyped]
 def TypedRelation(val); end
 
+# @requires_ancestor: Object
 # @abstract
 module TypedCommonRelationMethods
   extend T::Generic
+  include Enumerable[Elem]
 
   Elem = type_member(:out)
 
   # START CommonRelationMethods
+
+  sig { returns(T::Boolean) }
+  def blank?; end
+
+  sig { params(blk: T.proc.params(arg0: Elem).void).returns(T.untyped) }
+  sig { returns(T::Enumerator[Elem]) }
+  def each(&blk); end
 
   sig { abstract.returns(T::Array[Elem]) }
   def to_a; end

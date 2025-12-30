@@ -12,6 +12,13 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.5.0] - 30.12.2025
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.4.0...v0.5.0)
+
+### Changes
+- Add missing methods to `TypedRelation`
+
 ## [0.4.0] - 22.10.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.3.6...v0.4.0)
