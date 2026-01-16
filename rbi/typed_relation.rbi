@@ -699,7 +699,7 @@ module TypedGeneratedAssociationRelationMethods
   sig { abstract.params(args: T.untyped, blk: T.untyped).returns(T.self_type) }
   def from(*args, &blk); end
 
-  sig { abstract.params(args: T.untyped, blk: T.untyped).returns(TypedAssociation::Relation::GroupChain[Elem]) }
+  sig { abstract.params(args: T.untyped, blk: T.untyped).returns(TypedRelation::GroupChain[Elem]) }
   def group(*args, &blk); end
 
   sig { abstract.params(args: T.untyped, blk: T.untyped).returns(T.self_type) }
@@ -800,7 +800,7 @@ module TypedGeneratedAssociationRelationMethods
   sig { abstract.params(args: T.untyped, blk: T.untyped).returns(T.self_type) }
   def unscope(*args, &blk); end
 
-  sig { returns(TypedAssociation::Relation::WhereChain[Elem]) }
+  sig { returns(TypedRelation::WhereChain[Elem]) }
   sig { params(args: T.untyped).returns(T.self_type) }
   def where(*args); end
 
@@ -816,83 +816,10 @@ end
 
 module TypedAssociation
   class << self
-    #: (::ActiveRecord::Relation) -> TypedAssociation::Relation[untyped]
+    #: (::ActiveRecord::Relation) -> TypedRelation[untyped]
     def Relation(val); end
     #: (::ActiveRecord::Associations::CollectionProxy) -> CollectionProxy[untyped]
     def CollectionProxy(val); end
-  end
-
-  # @abstract
-  module Relation
-    extend T::Generic
-    include TypedCommonRelationMethods
-    include TypedGeneratedAssociationRelationMethods
-
-    Elem = type_member(:out)
-
-    class << self
-      #: (ActiveRecord::Relation) -> TypedAssociation::Relation::GroupChain[untyped]
-      def GroupChain(val); end
-      #: (ActiveRecord::QueryMethods::WhereChain) -> TypedAssociation::Relation::WhereChain[untyped]
-      def WhereChain(val); end
-    end
-
-    # @abstract
-    module WhereChain
-      extend T::Generic
-      Elem = type_member(:out)
-
-      sig { abstract.params(args: T.untyped).returns(TypedAssociation::Relation[Elem]) }
-      def associated(*args); end
-
-      sig { abstract.params(args: T.untyped).returns(TypedAssociation::Relation[Elem]) }
-      def missing(*args); end
-
-      sig { abstract.params(opts: T.untyped, rest: T.untyped).returns(TypedAssociation::Relation[Elem]) }
-      def not(opts, *rest); end
-    end
-
-    # @abstract
-    module GroupChain
-      extend T::Generic
-      include TypedAssociation::Relation
-
-      Elem = type_member(:out)
-
-      sig { abstract.params(column_name: T.any(String, Symbol)).returns(T::Hash[T.untyped, T.any(Integer, Float, BigDecimal)]) }
-      def average(column_name); end
-
-      sig do
-        abstract.params(
-          operation: Symbol,
-          column_name: T.any(String, Symbol)
-        ).returns(T::Hash[T.untyped, T.any(Integer, Float, BigDecimal)])
-      end
-      def calculate(operation, column_name); end
-
-      sig { abstract.params(column_name: T.untyped).returns(T::Hash[T.untyped, Integer]) }
-      def count(column_name = nil); end
-
-      sig { abstract.params(args: T.untyped, blk: T.untyped).returns(T.self_type) }
-      def having(*args, &blk); end
-
-      sig { abstract.params(column_name: T.any(String, Symbol)).returns(T::Hash[T.untyped, T.untyped]) }
-      def maximum(column_name); end
-
-      sig { abstract.params(column_name: T.any(String, Symbol)).returns(T::Hash[T.untyped, T.untyped]) }
-      def minimum(column_name); end
-
-      sig { abstract.returns(T::Hash[T.untyped, Integer]) }
-      def size; end
-
-      sig do
-        abstract.params(
-          column_name: T.nilable(T.any(String, Symbol)),
-          block: T.nilable(T.proc.params(record: T.untyped).returns(T.untyped))
-        ).returns(T::Hash[T.untyped, T.any(Integer, Float, BigDecimal)])
-      end
-      def sum(column_name = nil, &block); end
-    end
   end
 
   # Represents a typed `ActiveRecord::Associations::CollectionProxy`
@@ -954,7 +881,7 @@ module TypedAssociation
     end
     def replace(other_array); end
 
-    sig { abstract.returns(TypedAssociation::Relation[Elem]) }
+    sig { abstract.returns(TypedRelation[Elem]) }
     def scope; end
 
     sig { abstract.returns(T::Array[Elem]) }

@@ -12,6 +12,13 @@ Add changes in new features here. Do not change the gem's version in pull/merge 
 ### Changes
 -
 
+## [0.6.0] - 16.01.2026
+
+[Diff](https://github.com/espago/rails-on-sorbet/compare/v0.5.1...v0.6.0)
+
+### Breaking changes
+- Remove `TypedAssociated::Relation`, `TypedAssociation::Relation::GroupChain`, `TypedAssociation::Relation::WhereChain` in favour of `TypedRelation`, `TypedRelation::GroupChain`, `TypedRelation::WhereChain` respectively
+
 ## [0.5.1] - 30.12.2025
 
 [Diff](https://github.com/espago/rails-on-sorbet/compare/v0.5.0...v0.5.1)

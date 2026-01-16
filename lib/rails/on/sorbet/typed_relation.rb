@@ -32,26 +32,6 @@ module TypedAssociation
     def CollectionProxy(val) = val # rubocop:disable Naming/MethodName
   end
 
-  # Represents a `X::PrivateAssociationRelation` tapioca generated class, where `X` is an ActiveRecord model.
-  module Relation
-    extend T::Generic
-
-    class << self
-      def GroupChain(val) = val # rubocop:disable Naming/MethodName
-      def WhereChain(val) = val # rubocop:disable Naming/MethodName
-      def CollectionProxy(val) = val # rubocop:disable Naming/MethodName
-    end
-
-    module GroupChain
-      extend T::Generic
-      include Relation
-    end
-
-    module WhereChain
-      extend T::Generic
-    end
-  end
-
   module CollectionProxy
     extend T::Generic
     include TypedRelation

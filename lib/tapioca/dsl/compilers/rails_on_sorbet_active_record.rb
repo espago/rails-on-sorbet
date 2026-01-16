@@ -36,19 +36,19 @@ module Tapioca
                                                                     fixed: klass.fully_qualified_name,)
 
           private_association_relation = klass.create_class('PrivateAssociationRelation', superclass_name: '::ActiveRecord::AssociationRelation')
-          private_association_relation.create_include('::TypedAssociation::Relation')
+          private_association_relation.create_include('::TypedRelation')
           private_association_relation.create_type_variable('Elem', type:  'type_member',
                                                                     fixed: klass.fully_qualified_name,)
 
           private_relation_group_chain = klass.create_class('PrivateAssociationRelationGroupChain',
                                                             superclass_name: 'PrivateAssociationRelation',)
-          private_relation_group_chain.create_include('::TypedAssociation::Relation::GroupChain')
+          private_relation_group_chain.create_include('::TypedRelation::GroupChain')
           private_relation_group_chain.create_type_variable('Elem', type:  'type_member',
                                                                     fixed: klass.fully_qualified_name,)
 
           private_relation_where_chain = klass.create_class('PrivateAssociationRelationWhereChain',
                                                             superclass_name: '::ActiveRecord::QueryMethods::WhereChain',)
-          private_relation_where_chain.create_include('::TypedAssociation::Relation::WhereChain')
+          private_relation_where_chain.create_include('::TypedRelation::WhereChain')
           private_relation_where_chain.create_type_variable('Elem', type:  'type_member',
                                                                     fixed: klass.fully_qualified_name,)
 
